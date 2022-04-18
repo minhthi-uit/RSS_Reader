@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">RssReaderJava</string>
+    <string name="facebook_app_id">467397765181214</string>
+
+    <string name="facebook_client_token">2fdec70f47ea85be32d6a6dc212565df</string>
+    <string name="danh_sach_tin">Danh Sách Tin</string>
+    <string name="see_later">See Later</string>
+    <string name="see_all">See all</string>
+    <string name="see_more">See More</string>
+    <string name="save">Save</string>
+    <string name="load">Load</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="chua_co_tai_khoan">Bạn chưa có tài khoản?</string>
+    <string name="dang_ky">Đăng ký</string>
+    <string name="or">Hoặc</string>
+    <string name="dang_nhap">Đăng nhập</string>
+    <string name="rss_reader">RSS Reader</string>
+    <string name="rss_link">Rss Link</string>
+</resources>
