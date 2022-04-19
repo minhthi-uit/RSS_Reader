@@ -11,6 +11,9 @@ This application allows user to input a RSS url (eg: vnexpress/tinhte,...) and r
 ### Built with
 - Language: Java
 - IDE: Android Studio
+- minSdk: 29
+- targetSdk: 32
+- emulator: PIXEL 3 API 29
 - Firebase Authentication
 
 ## Some Screenshots
