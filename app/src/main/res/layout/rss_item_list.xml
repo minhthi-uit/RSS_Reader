@@ -6,7 +6,7 @@
     android:layout_marginVertical="10dp"
     android:orientation="vertical"
     android:background="@drawable/card_item"
-    android:padding="6sp">
+    android:padding="12sp">
 
     <TextView
         android:id="@+id/titleText"
