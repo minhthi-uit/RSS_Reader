@@ -42,5 +42,7 @@ Hiển thị danh sách các tin đã lưu vào xem sau.
 
 <img width="338" alt="Ảnh chụp Màn hình 2022-04-19 lúc 10 48 16" src="https://user-images.githubusercontent.com/75107710/163916477-78629495-e548-418c-bace-250c858111e8.png">
 
-
+## Installation
+1. Add configurations
+2. Run on emulator 
 
