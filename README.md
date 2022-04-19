@@ -28,10 +28,12 @@ This application allows user to input a RSS url (eg: vnexpress/tinhte,...) and r
 ### Màn hình chính 
 - Người dùng viết trang báo muốn đọc mà nhấn vào nút Load sẽ hiển thị danh sách tin.
 - Đọc toàn bộ tin bằng cách nhấn See More và nhấn Save để thêm vào danh sách xem sau.
+
 <img width="341" alt="Ảnh chụp Màn hình 2022-04-19 lúc 09 58 43" src="https://user-images.githubusercontent.com/75107710/163911912-a2069e61-07a5-42a7-9c74-1694e2cc1c5a.png">
 <img width="340" alt="Ảnh chụp Màn hình 2022-04-19 lúc 09 54 51" src="https://user-images.githubusercontent.com/75107710/163912493-c1171769-f5e1-4588-8570-ef9782225ff0.png">
 
 ### Màn hình xem tin đã lưu
 Hiển thị danh sách các tin đã lưu vào xem sau.
+
 <img width="342" alt="Ảnh chụp Màn hình 2022-04-19 lúc 09 57 09" src="https://user-images.githubusercontent.com/75107710/163912062-381ae3b7-1425-4399-9b6c-d0da2b50a6a6.png">
 
