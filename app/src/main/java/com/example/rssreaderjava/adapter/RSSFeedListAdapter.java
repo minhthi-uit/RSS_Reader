@@ -41,11 +41,11 @@ public FeedModelViewHolder onCreateViewHolder(ViewGroup parent, int type) {
 public void onBindViewHolder(FeedModelViewHolder holder, int position) {
 final RSSFeedModel itemRecyclerView = mRssFeedModels.get(position);
         holder.bindData(itemRecyclerView, position);
-//        if (itemRecyclerView.isShowSeeLater()) {
-//        holder.rssFeedView.findViewById(R.id.btnSave).setVisibility(View.VISIBLE);
-//        } else {
-//        holder.rssFeedView.findViewById(R.id.btnSave).setVisibility(View.GONE);
-//        }
+        if (itemRecyclerView.isShowSeeLater()) {
+        holder.rssFeedView.findViewById(R.id.btnSave).setVisibility(View.VISIBLE);
+        } else {
+        holder.rssFeedView.findViewById(R.id.btnSave).setVisibility(View.GONE);
+        }
         ((TextView) holder.rssFeedView.findViewById(R.id.titleText)).setText(itemRecyclerView.getTitle());
         ((TextView) holder.rssFeedView.findViewById(R.id.descriptionText)).setText(itemRecyclerView.getDescription());
 

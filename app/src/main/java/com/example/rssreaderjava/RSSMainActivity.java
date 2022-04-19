@@ -1,47 +1,32 @@
 package com.example.rssreaderjava;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Parcelable;
-import android.os.PersistableBundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Xml;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-
-
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import com.example.rssreaderjava.adapter.RSSFeedListAdapter;
 import com.example.rssreaderjava.authentication.LoginActivity;
 import com.example.rssreaderjava.models.RSSFeedModel;
 import com.google.firebase.auth.FirebaseAuth;
-
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+
 
 public class RSSMainActivity extends AppCompatActivity {
 
@@ -77,59 +62,29 @@ public class RSSMainActivity extends AppCompatActivity {
         mSwipeLayout =  findViewById(R.id.swipeRefreshLayout);
 
         ivSeeLater = findViewById(R.id.ivSeeLater);
-        ivSeeLater.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        ivSeeLater.setOnClickListener( v -> {
                 Intent intent = new Intent(getApplicationContext(), SeeLaterActivity.class);
                 startActivity(intent);
-            }
         });
 
         logOut = findViewById(R.id.imgLogout);
-        logOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        logOut.setOnClickListener(v -> {
                 FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
-            }
+
         });
 
-        mFetchFeedButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        mFetchFeedButton.setOnClickListener( v -> {
                 new FetchFeedTask().execute((Void) null);
-            }
         });
 
         mSwipeLayout.setOnRefreshListener(() -> {
-            setupAdapter();
             mSwipeLayout.setRefreshing(false);
         });
 
-        ExecutorService executor = Executors.newSingleThreadExecutor();
-        Handler handler = new Handler(Looper.getMainLooper());
-        executor.execute(() -> {
-            fetchDataToXml();
-            handler.post(this::setupAdapter);
-        });
     }
 
-    private void setupAdapter() {
-        mRSSFeedListAdapter = new RSSFeedListAdapter(mFeedModelList);
-        if (!RSSMainActivity.listSeeLater.isEmpty()) {
-            for (int i = 0; i < mFeedModelList.size(); i++) {
-                for (int j = 0; j < RSSMainActivity.listSeeLater.size(); j++) {
-                    if (RSSMainActivity.listSeeLater.get(j).getTitle().equals(
-                            mFeedModelList.get(i).getTitle()
-                    )) {
-                        mFeedModelList.get(i).setShowSeeLater(false);
-                    }
-                }
-            }
-        }
-        mRecyclerView.setAdapter(mRSSFeedListAdapter);
-    }
 
 
 public List<RSSFeedModel> parseFeed(InputStream inputStream) throws XmlPullParserException, IOException {
@@ -235,23 +190,6 @@ public List<RSSFeedModel> parseFeed(InputStream inputStream) throws XmlPullParse
         return desc;
     }
 
-    private void fetchDataToXml() {
-        String linkRss = mEditText.getText().toString();
-        if (!TextUtils.isEmpty(linkRss)) {
-            try {
-                if (!linkRss.startsWith("http://") && !linkRss.startsWith("https://"))
-                    linkRss = "http://" + linkRss;
-
-                URL url = new URL(linkRss);
-                URLConnection con = url.openConnection();
-                con.addRequestProperty("User-Agent", "firefox");
-                InputStream inputStream = con.getInputStream();
-                mFeedModelList = parseFeed(inputStream);
-            } catch (IOException | XmlPullParserException e) {
-                Log.d("ERROR", e.getMessage());
-            }
-        }
-    }
     private class FetchFeedTask extends AsyncTask<Void, Void, Boolean> {
 
         private String urlLink;

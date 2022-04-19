@@ -32,7 +32,6 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_regsiter);
-
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
@@ -40,20 +39,16 @@ public class RegisterActivity extends AppCompatActivity {
         edtEmail = findViewById(R.id.edtEmail);
         edtPassword = findViewById(R.id.edtPassword);
         firebaseAuth = FirebaseAuth.getInstance();
-        btnRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+
+        btnRegister.setOnClickListener(v -> {
                emailRegister();
-            }
         });
+
         tvLogin = findViewById(R.id.loginText);
-        tvLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        tvLogin.setOnClickListener(v -> {
                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                 setResult(Activity.RESULT_OK, intent);
                 finish();
-            }
         });
 
     }
