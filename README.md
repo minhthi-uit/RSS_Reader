@@ -16,7 +16,7 @@ This application allows user to input a RSS url (eg: vnexpress/tinhte,...) and r
 - emulator: PIXEL 3 API 29
 - Firebase Authentication
 
-## Some Screenshots
+## Screenshots & 
 
 ### Đăng nhập 
 - Người dùng có thể đăng nhập bằng tài khoản đã đăng ký trước đó hoặc đăng nhập với google mà không cần đăng ký. 
